@@ -1,0 +1,25 @@
+.featuresContainer {
+	display: grid;
+	$feat-size: 200px;
+	grid-template-columns: repeat(auto-fill, minmax($feat-size, 1fr));
+	gap: 0.75rem;
+}
+
+.title {
+	font-size: 3rem;
+	color: #fff;
+	line-height: 1;
+	margin-top: 5rem;
+}
+
+.text {
+	color: #fff;
+	line-height: 1;
+	font-weight: 300;
+	margin: 0.25rem 0 2rem 0;
+}
+
+.mainContainer {
+	width: 70%;
+	margin: 0 auto;
+}
