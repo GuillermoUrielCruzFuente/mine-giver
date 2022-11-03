@@ -1,0 +1,32 @@
+.title {
+	color: #fff;
+	font-weight: 900;
+}
+
+.mainContainer {
+	width: 70%;
+	margin-inline: auto;
+	padding-top: 80px;
+
+	// background-color: #111;
+
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+.playerInfoContainer {
+	display: flex;
+	align-items: center;
+	background-color: #111;
+	border-radius: 0.5rem;
+	width: fit-content;
+	padding: 1rem;
+
+	margin-top: 3rem;
+
+	div {
+		margin-left: 1rem;
+		color: #fff;
+	}
+}
