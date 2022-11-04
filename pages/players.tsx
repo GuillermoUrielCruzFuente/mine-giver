@@ -13,16 +13,25 @@ type Player = {
 
 const Players = () => {
 	const searchBarRef = useRef<HTMLInputElement>(null);
-	const [data, setData] = useState<Player | null>();
+	const [playerData, setPlayerData] = useState<Player | null>();
 
-	const fetchData = async (identifier: string) => {
-		const playerDataRequest = await fetch(
-			`https://playerdb.co/api/player/minecraft/${identifier}`
-		);
+	const fetchPlayerData = async (player: string) => {
+		const PLAYER_ENDPOINT = `https://playerdb.co/api/player/minecraft/${player}`;
 
-		const data = await playerDataRequest.json();
+		try {
+			const playerDataRequest = await fetch(PLAYER_ENDPOINT);
 
-		setData(data.data.player as Player);
+			if (playerDataRequest.status === 400) {
+				noPlayerFound();
+				throw new Error("The player name does not exist");
+			}
+
+			const playerData = await playerDataRequest.json();
+
+			setPlayerData(playerData.data.player as Player);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	const handleSearch = (event: SyntheticEvent) => {
@@ -31,9 +40,13 @@ const Players = () => {
 		if (searchBarRef.current) {
 			const searchTerm = searchBarRef.current.value;
 			searchTerm === ""
-				? fetchData("KorsakovUlianov")
-				: fetchData(searchTerm);
+				? fetchPlayerData("Melatoninan")
+				: fetchPlayerData(searchTerm);
 		}
+	};
+
+	const noPlayerFound = () => {
+		setPlayerData(null);
 	};
 
 	return (
@@ -48,22 +61,31 @@ const Players = () => {
 			</Head>
 
 			<main className={styles.mainContainer}>
-				<h1 className={styles.title}>Players Page</h1>
+				<h1 className={styles.title}>Player Finder</h1>
+				<p className={styles.playerSearchDescription}>
+					Start searching info about any player, just put his name/id
+					in the box below.
+				</p>
 				<form onSubmit={handleSearch}>
 					<input ref={searchBarRef} type="text" />
-					<button type="submit">Buscar</button>
+					<button type="submit">Search player</button>
 				</form>
 
-				<div className={styles.playerInfoContainer}>
-					<img
-						src={data?.avatar}
-						alt={`player ${data?.username} head`}
-					/>
-					<div>
-						<h1>{data?.username}</h1>
-						<p>id: {data?.raw_id}</p>
+				{!!playerData ? (
+					<div className={styles.playerInfoContainer}>
+						<img
+							src={playerData?.avatar}
+							alt={`player ${playerData?.username} head`}
+						/>
+						<div>
+							<h1>{playerData?.username}</h1>
+						</div>
 					</div>
-				</div>
+				) : (
+					<p className={styles.noPlayerLabel}>
+						Es probable que el jugador no exista
+					</p>
+				)}
 			</main>
 		</div>
 	);
