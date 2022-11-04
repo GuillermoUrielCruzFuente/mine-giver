@@ -1,18 +1,30 @@
 .title {
 	color: #fff;
 	font-weight: 900;
+	line-height: 1;
+}
+
+.playerSearchDescription {
+	color: #fff;
+	margin-bottom: 1.5rem;
+	margin-top: 0.5rem;
 }
 
 .mainContainer {
+	// width: min(100%, 1100px);
 	width: 70%;
 	margin-inline: auto;
 	padding-top: 80px;
 
-	// background-color: #111;
-
 	display: flex;
 	flex-flow: column;
-	align-items: center;
+	align-items: flex-start;
+}
+
+@media screen and (max-width: 1000px) {
+	.mainContainer {
+		width: 80%;
+	}
 }
 
 .playerInfoContainer {
@@ -25,8 +37,55 @@
 
 	margin-top: 3rem;
 
+	img {
+		aspect-ratio: 1;
+		width: 100%;
+	}
+
 	div {
 		margin-left: 1rem;
 		color: #fff;
 	}
+
+	h1 {
+		font-size: 1.5rem;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.mainContainer {
+		width: 90%;
+	}
+
+	.playerInfoContainer {
+		flex-flow: column;
+
+		div {
+			margin-left: 0;
+			margin-top: 2rem;
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.playerInfoContainer {
+		width: 90%;
+		margin-inline: auto;
+
+		h1 {
+			font-size: 1rem;
+		}
+	}
+}
+
+.noPlayerLabel {
+	color: #fff;
+	margin-top: 2rem;
+	width: 40%;
+	text-align: center;
+
+	background-color: crimson;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	background-color: #111;
 }
