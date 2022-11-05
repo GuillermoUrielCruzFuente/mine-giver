@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import styles from "../src/styles/pages/Players.module.scss";
+import Image from "next/image";
+import compassGif from "../src/static/img/compass.webp";
 
 type Player = {
 	avatar: string;
@@ -66,9 +68,19 @@ const Players = () => {
 					Start searching info about any player, just put his name/id
 					in the box below.
 				</p>
-				<form onSubmit={handleSearch}>
-					<input ref={searchBarRef} type="text" />
-					<button type="submit">Search player</button>
+
+				<form className={styles.searchForm} onSubmit={handleSearch}>
+					<input
+						ref={searchBarRef}
+						type="text"
+						placeholder="username/uuid"
+					/>
+					<button type="submit">
+						<div>
+							search
+							<Image src={compassGif} alt="minecraft compass" />
+						</div>
+					</button>
 				</form>
 
 				{!!playerData ? (
