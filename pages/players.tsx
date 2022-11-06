@@ -2,7 +2,9 @@ import Head from "next/head";
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import styles from "../src/styles/pages/Players.module.scss";
 import Image from "next/image";
+//images
 import compassGif from "../src/static/img/compass.webp";
+import steve from "../src/static/img/steve-using-spyglass.webp";
 
 type Player = {
 	avatar: string;
@@ -63,7 +65,7 @@ const Players = () => {
 			</Head>
 
 			<main className={styles.mainContainer}>
-				<h1 className={styles.title}>Player Finder</h1>
+				<h1 className={styles.title}>Players</h1>
 				<p className={styles.playerSearchDescription}>
 					Start searching info about any player, just put his name/id
 					in the box below.
@@ -75,19 +77,37 @@ const Players = () => {
 						type="text"
 						placeholder="username/uuid"
 					/>
-					<button type="submit">
-						<div>
+					<div className={styles.buttonContainer}>
+						<button type="submit">
 							search
-							<Image src={compassGif} alt="minecraft compass" />
-						</div>
-					</button>
+							{/* the parent div below prevents img overflow its parent (button) */}
+							<div>
+								<Image
+									className={styles.compass}
+									src={compassGif}
+									alt="minecraft compass"
+								/>
+							</div>
+						</button>
+
+						<Image
+							className={styles.steveImg}
+							src={steve}
+							alt="steve using the spyglass"
+						/>
+
+						<div className={styles.playerImgPatch}></div>
+					</div>
 				</form>
 
 				{!!playerData ? (
 					<div className={styles.playerInfoContainer}>
-						<img
+						<Image
 							src={playerData?.avatar}
-							alt={`player ${playerData?.username} head`}
+							width={200}
+							height={200}
+							alt={`${playerData?.username} head`}
+							title={`${playerData?.username}'s head`}
 						/>
 						<div>
 							<h1>{playerData?.username}</h1>
@@ -95,7 +115,7 @@ const Players = () => {
 					</div>
 				) : (
 					<p className={styles.noPlayerLabel}>
-						Es probable que el jugador no exista
+						this player does not exist
 					</p>
 				)}
 			</main>
