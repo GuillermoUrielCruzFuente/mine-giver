@@ -7,7 +7,6 @@ const nextConfig = {
 			{
 				protocol: "https",
 				hostname: "crafthead.net",
-				port: "",
 				pathname: "/avatar/**",
 			},
 		],
