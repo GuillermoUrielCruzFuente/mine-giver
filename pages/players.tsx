@@ -4,6 +4,8 @@ import { useState } from "react";
 import styles from "@/styles/pages/Players.module.scss";
 import PlayerSearchBar from "@/components/PlayerSearchBar";
 import { Player } from "@/utils/fetchPlayer";
+import { motion } from "framer-motion";
+import PlayerCard from "@/components/PlayerCard";
 
 const Players = () => {
 	const [playerData, setPlayerData] = useState<Player | undefined>();
@@ -28,24 +30,7 @@ const Players = () => {
 
 				<PlayerSearchBar dataSetter={setPlayerData} />
 
-				{!!playerData ? (
-					<div className={styles.playerInfoContainer}>
-						<Image
-							src={playerData?.avatar}
-							width={200}
-							height={200}
-							alt={`${playerData?.username} head`}
-							title={`${playerData?.username}'s head`}
-						/>
-						<div>
-							<h1>{playerData?.username}</h1>
-						</div>
-					</div>
-				) : (
-					<p className={styles.noPlayerLabel}>
-						this player does not exist
-					</p>
-				)}
+				<PlayerCard data={playerData} />
 			</main>
 		</div>
 	);
