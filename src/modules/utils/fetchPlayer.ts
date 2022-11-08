@@ -1,7 +1,7 @@
 export type Player = {
 	avatar: string;
 	id: string;
-	raw_id: string;
+	rawId: string;
 	username: string;
 };
 
