@@ -1,8 +1,9 @@
 export type Player = {
-	avatar: string;
-	id: string;
-	rawId: string;
 	username: string;
+	id: string;
+	raw_id: string;
+	avatar: string;
+	name_history: Array<string>;
 };
 
 const PLAYER_ENDPOINT = "https://playerdb.co/api/player/minecraft/";
