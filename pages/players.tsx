@@ -4,6 +4,7 @@ import styles from "@/styles/pages/Players.module.scss";
 import PlayerSearchBar from "@/components/PlayerSearchBar";
 import { Player } from "@/utils/fetchPlayer";
 import PlayerCard from "@/components/PlayerCard";
+import ThreePlayerRender from "@/components/ThreePlayerRender";
 
 const Players = () => {
 	const [playerData, setPlayerData] = useState<Player | undefined>();
@@ -29,6 +30,8 @@ const Players = () => {
 				<PlayerSearchBar dataSetter={setPlayerData} />
 
 				<PlayerCard data={playerData} />
+
+				<ThreePlayerRender />
 			</main>
 		</div>
 	);
