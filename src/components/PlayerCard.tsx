@@ -1,6 +1,7 @@
 import { Player } from "@/utils/fetchPlayer";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "@/styles/components/PlayerCard.module.scss";
+import Image from "next/image";
 
 const PlayerCard = ({ data }: { data?: Player }) => {
 	return (
@@ -25,31 +26,59 @@ const PlayerCard = ({ data }: { data?: Player }) => {
 						<p>{data.id}</p>
 					</div>
 
-					<h2>skins</h2>
+					<h2>skin</h2>
 					<div className={styles.imgContainer}>
-						<img
+						<Image
 							src={data.avatar}
 							alt={`${data.username}'s head, frontal render`}
 							title={`${data.username}'s head, frontal render`}
+							height={150}
+							width={150}
 						/>
 
-						<img
+						{/* 
+							w / h
+							180 / 167
+							x	/ 150
+
+							w = (180*150)/167 = 161.67664670658684
+						*/}
+						<Image
 							src={`https://crafthead.net/cube/${data.raw_id}`}
 							alt={`${data.username}'s head, isometric render`}
 							title={`${data.username}'s head, isometric render`}
+							height={150}
+							width={161.67}
 						/>
-
-						<img
+						{/* 
+							w	/ h
+							=========
+							157 / 360
+							x	/ 150
+							=========
+							*w = 65.41666666666667
+						 */}
+						<Image
 							src={`https://crafthead.net/body/${data.raw_id}`}
 							alt={`${data.username}'s full body, frontal render`}
 							title={`${data.username}'s full body, frontal render`}
+							height={150}
+							width={65.41}
 						/>
 
-						<img
-							src={`https://crafthead.net/skin/${data.raw_id}`}
-							alt={`${data.username}'s skin`}
-							title={`${data.username}'s skin`}
-						/>
+						{/* 
+							2 / 1
+							1 / 1
+
+						 */}
+						<div className={styles.skinContainer}>
+							<Image
+								src={`https://crafthead.net/skin/${data.raw_id}`}
+								alt={`${data.username}'s skin`}
+								title={`${data.username}'s skin`}
+								fill={true}
+							/>
+						</div>
 					</div>
 				</motion.div>
 			)}

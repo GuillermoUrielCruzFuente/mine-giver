@@ -6,6 +6,7 @@ $card-border-radius: 0.75rem;
 	padding: 1.5rem;
 	border-radius: $card-border-radius;
 	margin-top: 3rem;
+	width: min(100%, 700px);
 
 	h1 {
 		font-size: 3rem;
@@ -39,27 +40,19 @@ $card-border-radius: 0.75rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: 150px;
+		height: calc(150px + 2rem);
+		padding: 1rem;
+		padding-left: 0;
+		gap: 1rem;
 
-		border-radius: $card-border-radius;
-		border: inherit;
-		padding: 0.75rem;
-		gap: 0.75rem;
+		.skinContainer {
+			position: relative;
+			height: 150px;
+			width: 150px;
 
-		img {
-			height: 100%;
-			width: auto;
-			padding: 0.75rem;
-			border-radius: $card-border-radius;
-			border: inherit;
-		}
-
-		img:first-child {
-			margin-left: 0rem;
-		}
-
-		img:last-child {
-			margin-right: 0rem;
+			img {
+				object-fit: contain;
+			}
 		}
 	}
 }
