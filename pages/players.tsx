@@ -1,10 +1,8 @@
-import Image from "next/image";
 import Head from "next/head";
 import { useState } from "react";
 import styles from "@/styles/pages/Players.module.scss";
 import PlayerSearchBar from "@/components/PlayerSearchBar";
 import { Player } from "@/utils/fetchPlayer";
-import { motion } from "framer-motion";
 import PlayerCard from "@/components/PlayerCard";
 
 const Players = () => {
@@ -17,7 +15,7 @@ const Players = () => {
 
 				<meta
 					name="description"
-					content="Search whoever player basic info"
+					content="look for name availability or your favorite player skin"
 				/>
 			</Head>
 
