@@ -9,6 +9,21 @@ const nextConfig = {
 				hostname: "crafthead.net",
 				pathname: "/avatar/**",
 			},
+			{
+				protocol: "https",
+				hostname: "crafthead.net",
+				pathname: "/cube/**",
+			},
+			{
+				protocol: "https",
+				hostname: "crafthead.net",
+				pathname: "/body/**",
+			},
+			{
+				protocol: "https",
+				hostname: "crafthead.net",
+				pathname: "/skin/**",
+			},
 		],
 	},
 };
