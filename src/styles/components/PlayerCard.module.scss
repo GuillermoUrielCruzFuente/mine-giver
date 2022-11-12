@@ -1,57 +1,76 @@
+// body images come in 2 different sizes
+// depends on user selection,
+// minecraft java provides 2 options:
+// =============================================================
+// wide -> 1/2 | user examples: [KorsakovUlianov, bloodunicorn]
+// and
+// slim -> 24/55 | user examples: [adrigatin, melatonina]
+// =============================================================
+
+//intrinsic aspect ratio
+$player-body-aspect-ratio-slim: 24/55;
+$player-body-aspect-ratio-wide: 1/2;
+
+//misc
 $card-border-radius: 0.75rem;
+$card-spacing: 2rem;
 
 .playerContainer {
+	background-color: #091d01;
+	border: dashed 2px #237003;
+	overflow: hidden;
+
 	color: #fff;
-	border: solid 2px #0d2901;
-	padding: 1.5rem;
 	border-radius: $card-border-radius;
-	margin-top: 3rem;
+	margin-top: 2rem;
 	width: min(100%, 700px);
 
-	h1 {
-		font-size: 3rem;
-		line-height: 1;
-		margin-bottom: 0.75rem;
+	display: flex;
+
+	.fullBodyContainer {
+		box-sizing: content-box;
+		width: 180px;
+		aspect-ratio: 1/2;
+
+		padding: $card-spacing;
+
+		background-color: #071601;
 	}
 
-	p {
-		font-size: 0.75rem;
-	}
+	.infoContainer {
+		flex-grow: 1;
+		padding: $card-spacing;
 
-	.info {
-		display: flex;
-		align-items: baseline;
-	}
+		.nameLayout {
+			display: flex;
 
-	.tag {
-		font-size: 0.65rem;
-		font-weight: 900;
-		color: #26630c;
-		text-transform: uppercase;
-		margin-right: 0.5rem;
-	}
+			.headCubeContainer {
+				position: relative;
+				height: 70px;
+				aspect-ratio: 1;
+				margin-right: 0.5rem;
 
-	h2 {
-		margin-top: 0.75rem;
-		font-size: 1.25rem;
-	}
+				img {
+					object-fit: contain;
+					transform: translateY(-12px);
+				}
+			}
 
-	.imgContainer {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: calc(150px + 2rem);
-		padding: 1rem;
-		padding-left: 0;
-		gap: 1rem;
+			.usernameContainer {
+				h1 {
+					font-size: 2rem;
+					line-height: 1;
+					margin-bottom: 0.75rem;
+					color: #daf2d0;
+				}
 
-		.skinContainer {
-			position: relative;
-			height: 150px;
-			width: 150px;
-
-			img {
-				object-fit: contain;
+				p {
+					font-size: 0.85rem;
+					font-weight: 900;
+					text-transform: uppercase;
+					line-height: 1;
+					color: #1b5702;
+				}
 			}
 		}
 	}
