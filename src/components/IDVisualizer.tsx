@@ -21,7 +21,7 @@ const IDVisualizer = ({ id, rawId }: Identifiers) => {
 
 	useEffect(() => {
 		setInputValueToRawId();
-	}, [id, rawId]);
+	}, [id]);
 
 	return (
 		<div className={styles.IDVisualizerContainer}>
