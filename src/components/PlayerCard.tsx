@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "@/styles/components/PlayerCard.module.scss";
 import Image from "next/image";
 import IDVisualizer from "@/components/IDVisualizer";
-import { forceSkinDownload } from "@/utils/ForceDownload";
+import { forceSkinDownload } from "@/utils/forceDownload";
 
 const PlayerCard = ({ data }: { data?: Player }) => {
 	const handleSkinDownload = async () => {
