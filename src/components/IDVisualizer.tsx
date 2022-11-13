@@ -20,8 +20,8 @@ const IDVisualizer = ({ id, rawId }: Identifiers) => {
 	};
 
 	useEffect(() => {
-		setInputValueToRawId();
-	}, [id]);
+		setSelection(rawId);
+	}, [rawId]);
 
 	return (
 		<div className={styles.IDVisualizerContainer}>
