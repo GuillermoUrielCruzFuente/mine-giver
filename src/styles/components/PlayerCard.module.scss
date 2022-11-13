@@ -29,17 +29,32 @@ $card-spacing: 2rem;
 
 	.fullBodyContainer {
 		box-sizing: content-box;
-		width: 180px;
+		width: 150px;
 		aspect-ratio: 1/2;
 
 		padding: $card-spacing;
 
-		background-color: #071601;
+		background-color: #061101;
+
+		position: relative;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img {
+			position: static !important;
+			object-fit: contain;
+		}
 	}
 
 	.infoContainer {
 		flex-grow: 1;
 		padding: $card-spacing;
+		display: flex;
+		flex-flow: column;
+		align-items: flex-start;
+		justify-content: space-between;
 
 		.nameLayout {
 			display: flex;
@@ -57,13 +72,6 @@ $card-spacing: 2rem;
 			}
 
 			.usernameContainer {
-				h1 {
-					font-size: 2rem;
-					line-height: 1;
-					margin-bottom: 0.75rem;
-					color: #daf2d0;
-				}
-
 				p {
 					font-size: 0.85rem;
 					font-weight: 900;
@@ -71,6 +79,33 @@ $card-spacing: 2rem;
 					line-height: 1;
 					color: #1b5702;
 				}
+
+				h1 {
+					font-size: 2rem;
+					line-height: 1;
+					margin-bottom: 0.75rem;
+					color: #daf2d0;
+				}
+			}
+		}
+
+		.downloadButton {
+			width: 100%;
+			text-transform: uppercase;
+			margin-top: 2rem;
+			background-color: #237003;
+			color: #fff;
+			outline: none;
+			border: none;
+			padding-block: 0.5rem;
+			border-radius: 0.5rem;
+			cursor: pointer;
+			transition: background-color 200ms, color 200ms;
+			font-weight: 900;
+
+			&:hover {
+				background-color: #34a106;
+				color: #c5e9b6;
 			}
 		}
 	}

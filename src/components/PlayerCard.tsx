@@ -2,8 +2,14 @@ import { Player } from "@/utils/fetchPlayer";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "@/styles/components/PlayerCard.module.scss";
 import Image from "next/image";
+import IDVisualizer from "@/components/IDVisualizer";
+import { forceSkinDownload } from "@/utils/ForceDownload";
 
 const PlayerCard = ({ data }: { data?: Player }) => {
+	const handleSkinDownload = async () => {
+		await forceSkinDownload(data!.username, data!.rawId);
+	};
+
 	return (
 		<AnimatePresence>
 			{!!data && (
@@ -15,14 +21,18 @@ const PlayerCard = ({ data }: { data?: Player }) => {
 					className={styles.playerContainer}
 				>
 					<div className={styles.fullBodyContainer}>
-						<h1>a</h1>
+						<Image
+							src={`https://crafthead.net/body/${data.rawId}`}
+							alt={`${data.username}'s body`}
+							fill={true}
+						/>
 					</div>
 
 					<div className={styles.infoContainer}>
 						<div className={styles.nameLayout}>
 							<div className={styles.headCubeContainer}>
 								<Image
-									src={`https://crafthead.net/cube/${data.raw_id}`}
+									src={`https://crafthead.net/cube/${data.rawId}`}
 									alt={`${data.username}'s head, isometric render`}
 									title={`${data.username}'s head, isometric render`}
 									fill={true}
@@ -35,15 +45,14 @@ const PlayerCard = ({ data }: { data?: Player }) => {
 							</div>
 						</div>
 
-						<div className={styles.info}>
-							<p className={styles.tag}>raw id</p>
-							<p>{data.raw_id}</p>
-						</div>
+						<IDVisualizer id={data.id} rawId={data.rawId} />
 
-						<div className={styles.info}>
-							<p className={styles.tag}>id</p>
-							<p>{data.id}</p>
-						</div>
+						<button
+							className={styles.downloadButton}
+							onClick={handleSkinDownload}
+						>
+							download skin
+						</button>
 					</div>
 				</motion.div>
 			)}
