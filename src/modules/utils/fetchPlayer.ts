@@ -1,10 +1,15 @@
-export type Player = {
+import { CamelCasedProperties } from "type-fest";
+
+export type RawPlayer = {
 	username: string;
 	id: string;
 	raw_id: string;
 	avatar: string;
 	name_history: Array<string>;
+	meta: {};
 };
+
+export type Player = CamelCasedProperties<RawPlayer>;
 
 const PLAYER_ENDPOINT = "https://playerdb.co/api/player/minecraft/";
 
@@ -19,9 +24,20 @@ const fetchPlayer = async (identifier: string): Promise<Player | undefined> => {
 			throw new Error("That player does not exist");
 		}
 
-		const playerData = await playerRequest.json();
+		const fetchedData = await playerRequest.json();
 
-		return playerData.data.player as Player;
+		const playerData = fetchedData.data.player as RawPlayer;
+
+		const player: Player = {
+			username: playerData.username,
+			id: playerData.id,
+			rawId: playerData.raw_id,
+			avatar: playerData.avatar,
+			nameHistory: playerData.name_history,
+			meta: playerData.meta,
+		};
+
+		return player;
 	} catch (error) {
 		console.log(error);
 		return undefined;

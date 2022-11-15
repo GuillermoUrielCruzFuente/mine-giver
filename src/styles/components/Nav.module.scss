@@ -1,0 +1,45 @@
+@use "../base/z-index" as index;
+
+.nav {
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: index.$nav;
+	background-color: #2223;
+	backdrop-filter: blur(8px);
+	box-shadow: 0 0 16px #000;
+	padding: 1rem 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	a {
+		font-weight: 900;
+		text-decoration: none;
+		color: #fff;
+	}
+
+	.home {
+		font-size: 1.5rem;
+	}
+
+	.links {
+		a {
+			font-size: 1rem;
+			text-transform: uppercase;
+			margin-right: 1rem;
+		}
+
+		a:last-child {
+			margin-right: 0;
+		}
+
+		.active {
+			color: chartreuse;
+		}
+
+		.noActive {
+			color: #fff;
+		}
+	}
+}

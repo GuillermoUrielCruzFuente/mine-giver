@@ -1,0 +1,96 @@
+.IDVisualizerContainer {
+	background-color: #061101;
+	padding: 2rem;
+	border-radius: 0.75rem;
+	width: 100%;
+
+	.topic {
+		font-size: 0.85rem;
+		font-weight: 900;
+		text-transform: uppercase;
+		line-height: 1;
+		color: #1b5702;
+	}
+
+	.switcher {
+		margin-top: 1rem;
+
+		.switcherButtonsContainer {
+			display: flex;
+			flex-flow: row;
+		}
+
+		button:first-child {
+			margin-right: 0.5rem;
+		}
+
+		@mixin BaseButton {
+			border: none;
+			outline: none;
+			font-size: 0.75rem;
+			font-weight: 900;
+			line-height: 1;
+			cursor: pointer;
+			display: block;
+			border-radius: 0.25rem 0.25rem 0 0;
+			text-transform: uppercase;
+			padding: 0.35rem 0.7rem;
+			// height: fit-content;
+			// margin-top: auto;
+
+			// transition: padding 200ms;
+		}
+
+		.switcherButton {
+			@include BaseButton;
+
+			color: #fff;
+			background-color: #143408;
+		}
+
+		.switcherButtonActive {
+			@include BaseButton;
+
+			// add padding to active state
+			// padding: 0.5rem 0.7rem;
+			color: rgb(215, 243, 214);
+			background-color: #379e0d;
+		}
+	}
+
+	.idCoppier {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+
+		// margin-top: 0.5rem;
+		width: 100%;
+
+		.idInput {
+			font-size: 0.75rem;
+			// width: 100%;
+			background-color: #000;
+			color: #fff;
+			padding: 0.25rem 0.5rem;
+
+			outline: none;
+			border: solid 1px #379e0d;
+			border-radius: 0 0 0 0.25rem;
+
+			flex-grow: 1;
+		}
+
+		button {
+			background-color: #237003;
+			outline: none;
+			border: solid 1px #379e0d;
+			border-radius: 0 0.25rem 0.25rem 0;
+			font-size: 0.75rem;
+			padding: 0.25rem 0.5rem;
+			font-weight: 900;
+			color: #b0e19c;
+			cursor: pointer;
+			text-transform: uppercase;
+		}
+	}
+}
