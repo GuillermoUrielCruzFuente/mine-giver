@@ -1,0 +1,52 @@
+$border-radius: 0.8rem;
+
+.homeCard {
+	overflow: hidden;
+	border-radius: $border-radius;
+	// background-color: chocolate;
+
+	display: flex;
+	flex-flow: column;
+
+	.imgContainer {
+		width: 100%;
+		aspect-ratio: 1.4;
+		border-radius: $border-radius $border-radius 0 0;
+		background-color: #282828;
+	}
+
+	.infoContainer {
+		flex-grow: 1;
+		padding: 1rem 1.5rem 1rem 1.5rem;
+		padding: 1.5rem;
+		background-color: #222;
+
+		display: flex;
+		flex-flow: column;
+
+		h1 {
+			font-size: 1.25rem;
+			margin-bottom: 1rem;
+			text-transform: capitalize;
+			color: #aaa;
+		}
+
+		p {
+			font-size: 1rem;
+            line-height: 1.75;
+			color: #888;
+			margin-bottom: 1.5rem;
+		}
+
+		a {
+			margin-top: auto;
+			font-weight: 900;
+			background-color: #444;
+			padding: 1rem 0;
+			text-decoration: none;
+			color: #fff;
+			border-radius: $border-radius;
+			text-align: center;
+		}
+	}
+}
