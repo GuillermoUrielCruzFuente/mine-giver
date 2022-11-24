@@ -7,6 +7,8 @@ import styles from "../src/styles/pages/Home.module.scss";
 
 //custom components
 import Feature, { FeatureType } from "../src/components/Feature";
+import HomeCardsData from "@/data/HomeCards";
+import HomeCard from "@/components/HomeCard";
 
 const features: Array<FeatureType> = [
 	{
@@ -39,7 +41,7 @@ export default function Home() {
 	return (
 		<div>
 			<Head>
-				<title>MineGiver | Minecraft Utils</title>
+				<title>MineGiver | The Minecrafter toolkit</title>
 				<meta
 					name="description"
 					content="MineGiver is a webapp that helps players to create and search some related things about the game them love"
@@ -48,24 +50,22 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.mainContainer}>
-				<h1 className={styles.title}>MineGiver</h1>
-				<p className={styles.text}>A tool to help players</p>
-
-				<hr />
-
-				<h2>Command generator</h2>
-				<div className={styles.featuresContainer}>
-					{features.map((feat: FeatureType) => {
-						return <Feature key={feat.name} name={feat.name} />;
-					})}
+				<div className={styles.titlesContainer}>
+					<p className={styles.upTitle}>The Minecrafter toolkit</p>
+					<h1 className={styles.title}>MineGiver</h1>
+					<p className={styles.text}>
+						An intuitive way for command generation, search
+						information about other players and discover new things.
+					</p>
 				</div>
 
-				<hr />
-
-				<h2>Player related stuff</h2>
-				<Link href="/players">Search player info</Link>
-
-				<hr />
+				<header className={styles.features}>
+					<div className={styles.homeCardsContainer}>
+						{HomeCardsData.map((cardProps) => (
+							<HomeCard {...cardProps} />
+						))}
+					</div>
+				</header>
 			</main>
 		</div>
 	);
