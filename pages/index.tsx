@@ -62,7 +62,7 @@ export default function Home() {
 				<header className={styles.features}>
 					<div className={styles.homeCardsContainer}>
 						{HomeCardsData.map((cardProps) => (
-							<HomeCard {...cardProps} />
+							<HomeCard {...cardProps} key={cardProps.route} />
 						))}
 					</div>
 				</header>
