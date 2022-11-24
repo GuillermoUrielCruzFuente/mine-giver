@@ -11,9 +11,13 @@ import {
 	WebGLRenderer,
 } from "three";
 
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+
 import grassBottom from "@/images/grass_block/dirt.png";
 import grassTop from "@/images/grass_block/grass_block_top.png";
 import grassSide from "@/images/grass_block/grass_block_side.png";
+
+// import player3DModel from "../static/GLTF/player/scene.gltf";
 
 const ThreePlayerRender = () => {
 	const refRenderer = useRef<HTMLDivElement>(null);
@@ -29,9 +33,9 @@ const ThreePlayerRender = () => {
 		const camera = new PerspectiveCamera(fov, aspect, near, far);
 
 		//renderer setup and document append
-		const renderer = new WebGLRenderer();
+		const renderer = new WebGLRenderer({ antialias: true });
 		renderer.setSize(350, 350);
-		renderer.setClearColor(0x140236);
+		// renderer.setClearColor(0x140236);
 		refRenderer.current!.appendChild(renderer.domElement);
 
 		//cube geometry
@@ -39,9 +43,38 @@ const ThreePlayerRender = () => {
 
 		//load the texture images
 		const loader = new TextureLoader();
-		const bottomTexture = loader.load(grassBottom.src);
-		const topTexture = loader.load(grassTop.src);
-		const sideTexture = loader.load(grassSide.src);
+
+		const textureLoadingStatus = {
+			bottom: false,
+			top: false,
+			side: false,
+		};
+
+		const isLoaded = () => {
+			if (
+				textureLoadingStatus.bottom &&
+				textureLoadingStatus.top &&
+				textureLoadingStatus.side
+			) {
+				// renderer.render(scene, camera);
+				animate();
+			}
+		};
+
+		const bottomTexture = loader.load(grassBottom.src, () => {
+			textureLoadingStatus.bottom = true;
+			isLoaded();
+		});
+
+		const topTexture = loader.load(grassTop.src, () => {
+			textureLoadingStatus.top = true;
+			isLoaded();
+		});
+
+		const sideTexture = loader.load(grassSide.src, () => {
+			textureLoadingStatus.side = true;
+			isLoaded();
+		});
 
 		//set the magFilter property to nearest, in order to avoid the pixels look blurry
 		bottomTexture.magFilter = NearestFilter;
@@ -68,17 +101,26 @@ const ThreePlayerRender = () => {
 		const animate = () => {
 			requestAnimationFrame(animate);
 
-			grassBlock.rotation.x += 0.00915;
-			grassBlock.rotation.y += 0.00915;
+			grassBlock.rotation.x += 0.025;
+			grassBlock.rotation.y += 0.025;
 
 			renderer.render(scene, camera);
 		};
 
-		animate();
+		// const gltfLoader = new GLTFLoader();
+		// gltfLoader.load("GLTF/player/scene.gltf", (player) => {
+		// 	// player.scene.rotation.y = Math.PI / 8;
+		// 	// player.scene.position.y = 3;
+		// 	// player.scene.scale.set(10, 10, 10);
+
+		// 	scene.add(player.scene);
+
+		// 	renderer.render(scene, camera);
+		// });
 
 		return () => {
 			scene.clear();
-			refRenderer.current!.removeChild(renderer.domElement);
+			refRenderer.current?.removeChild(renderer.domElement);
 		};
 	}, []);
 
