@@ -7,7 +7,7 @@ import styles from "../src/styles/pages/Home.module.scss";
 
 //custom components
 import Feature, { FeatureType } from "../src/components/Feature";
-import HomeCardsData from "@/data/HomeCards";
+import HomeCardsData from "@/data/HomeCardsData";
 import HomeCard from "@/components/HomeCard";
 
 const features: Array<FeatureType> = [
