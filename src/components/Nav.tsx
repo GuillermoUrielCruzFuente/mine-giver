@@ -1,9 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import styles from "@/styles/components/Nav.module.scss";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const Nav = () => {
-	const { pathname } = useRouter();
+	const pathname = usePathname();
 
 	const getActiveStyles = (route: string) =>
 		pathname === route ? styles.active : styles.noActive;
